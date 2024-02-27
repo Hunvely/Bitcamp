@@ -1,4 +1,4 @@
-package Algorithms;
+package Algorithms.src;
 
 import java.util.Random;
 
