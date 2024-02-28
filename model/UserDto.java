@@ -119,8 +119,7 @@ public class UserDto {
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", address='" + address + '\'' +
                 ", job='" + job + '\'' +
-                ", weight=" + weight +
-                ", height=" + height +
+                 "\n" +
                 '}';
     }
 }

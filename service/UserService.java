@@ -3,24 +3,28 @@ package service;
 import model.UserDto;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
 
 public interface UserService {
 
-    String join(UserDto user);
+    String join(Scanner input);
 
-    String login(UserDto user);
+    //String addUsers();
 
-    UserDto findUserById(String username);
+    String login(Scanner input);
 
-    void updatePassword(UserDto userDto);
+    UserDto findUserById(Scanner input);
 
-    String deleteUser(String username);
+    String updatePassword(Scanner input);
 
-    List<UserDto> getUserList();
+    UserDto deleteUser(Scanner input);
 
-    List<UserDto> findUsersByName(String name);
+    public Map<String, UserDto> getUserInfo();
+
+    List<UserDto> findUsersByName(Scanner input);
 
     List<UserDto> findUserByJob(String job);
 
-    int countUsers();
+    String countUsers();
 }

@@ -11,7 +11,6 @@ import java.util.Scanner;
 
 public class AuthServiceImpl implements AuthService {
 
-
     private static AuthService instance = new AuthServiceImpl();
 
     Map<String, UserDto> users;
@@ -28,7 +27,8 @@ public class AuthServiceImpl implements AuthService {
     public String join(Scanner input) {
         System.out.println("ID, 비밀번호, 비밀번호 확인, 이름, 주민 번호," +
                 " 전화번호, 주소, 직업을 순서대로 입력하세요.");
-
+        String username = input.next();
+        //users.put(username, );
         UserDto userInfo = new UserBuilder()
                 .username(input.next())
                 .password(input.next())
@@ -40,11 +40,12 @@ public class AuthServiceImpl implements AuthService {
                 .job(input.next())
                 .build()
                 ;
-        return null;
+        return "회원가입을 축하합니다.";
     }
 
     @Override
-    public String login() {
+    public String login(Scanner input) {
+
         return null;
     }
 

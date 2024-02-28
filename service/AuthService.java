@@ -9,7 +9,7 @@ public interface AuthService {
 
     public String join(Scanner input);
 
-    public String login();
+    public String login(Scanner input);
 
     String addUsers();
 

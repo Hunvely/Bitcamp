@@ -19,8 +19,9 @@ public class AuthController{
         return auth.join(input);
     }
 
-    public String login() {
-        return auth.login();
+    public String login(Scanner input) {
+
+        return auth.login(input);
     }
 
     public String addUsers() {
@@ -32,6 +33,8 @@ public class AuthController{
         auth.findUser(username);
         return null;
     }
+
+
 
     public Map<String, UserDto> getUserMap() {
         return auth.getUserMap();
