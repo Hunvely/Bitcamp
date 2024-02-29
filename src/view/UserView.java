@@ -53,13 +53,15 @@ public class UserView {
                     break;
                 case "6":
                     System.out.println("=== 회원 목록을 조회합니다. ===");
-                    userCtrl.getUserInfo();
+                    userCtrl.getUserInfo(input);
                     break;
                 case "7":
                     System.out.println("=== 회원 이름으로 검색합니다. ===");
+                    userCtrl.findUsersByName(input);
                     break;
                 case "8" :
                     System.out.println("=== 회원의 직업으로 검색합니다. ===");
+                    userCtrl.findUserByJob(input);
                     break;
                 case "9":
                     System.out.println("=== 회원의 수를 조회합니다. ===");

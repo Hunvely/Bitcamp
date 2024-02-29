@@ -36,9 +36,12 @@ public class UserController {
         return user.deleteUser(input);
     }
 
-    public Map<String, UserDto> getUserInfo() {
-        user.getUserInfo();
-        return (Map<String, UserDto>) user;
+    public List<UserDto> getUserInfo(Scanner input) {
+        return user.getUserInfo(input);
+    }
+
+    public List<UserDto> findUserByName(Scanner input) {
+        return user.findUsersByName(input);
     }
 
 
@@ -50,11 +53,12 @@ public class UserController {
         return user.findUsersByName(input);
     }
 
+    public List<UserDto> findUserByJob(Scanner input) {
+        return user.findUserByJob(input);
+    }
+
     public String countUsers() {
         System.out.println("현재 회원 수는 " + user.countUsers() + " 명입니다.");
         return user.countUsers();
     }
-
-    // 서비스에 있는 거 다 끌고 와야함
-
 }

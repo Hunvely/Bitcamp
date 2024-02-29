@@ -4,10 +4,7 @@ import builder.UserBuilder;
 import model.UserDto;
 import service.UserService;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class UserServiceImpl implements UserService {
 
@@ -19,8 +16,11 @@ public class UserServiceImpl implements UserService {
 
     Map<String, UserDto> users;
 
+    List<String> list;
+
     private UserServiceImpl() {
         this.users = new HashMap<>();
+        this.list = new ArrayList<String>();
     }
 
 
@@ -85,7 +85,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String updatePassword(Scanner input) {
-        System.out.print("이름을 입력하세용 : ");
+        System.out.print("아이디를 입력하세요 : ");
         String username = input.next();
         UserDto user = users.get(username);
         if (user != null) {
@@ -105,7 +105,7 @@ public class UserServiceImpl implements UserService {
         String userId = input.next();
 
         UserDto user = users.get(userId);
-        if (userId.equals(user.getUserId())) {
+        if (userId.equals(user.getUsername())) {
             users.remove(userId);
             System.out.println("탈퇴가 완료되었습니다.");
         } else {
@@ -115,9 +115,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Map<String, UserDto> getUserInfo() {
-        users.forEach((k, v) -> System.out.println("{" + k + "," + v + "},"));
-        return users;
+    public List<UserDto> getUserInfo(Scanner input) {
+       // users.forEach((k, v) -> System.out.println("{" + k + "," + v + "},"));
+        return new ArrayList<>(users.values());
     }
 
     @Override
@@ -128,13 +128,21 @@ public class UserServiceImpl implements UserService {
         if (userName != null) {
             System.out.println(userName);
         } else {
-            System.out.println("아이디가 존재하지 않습니다.");
+            System.out.println("찾는 회원의 이름이 존재하지 않습니다.");
         }
         return null;
     }
 
     @Override
-    public List<UserDto> findUserByJob(String job) {
+    public List<UserDto> findUserByJob(Scanner input) {
+        System.out.print("찾는 회원의 직업을 검색하세요 : ");
+        String job = input.next();
+        UserDto userJob = users.get(job);
+        if (userJob != null) {
+            System.out.println(userJob);
+        } else {
+            System.out.println("찾는 회원의 직업이 존재하지 않습니다.");
+        }
         return null;
     }
 

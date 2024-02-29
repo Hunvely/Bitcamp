@@ -16,7 +16,6 @@ public class KaupServiceImpl implements KaupService {
     }
 
 
-
     @Override
     public double createBmi(UserDto user) {
         double height = user.getHeight();

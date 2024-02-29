@@ -2,6 +2,7 @@ package builder;
 
 import model.UserDto;
 
+
 public class UserBuilder {
 
     private String username;

@@ -37,11 +37,11 @@ public class GradeView {
                 .math(util.createRandomInterger(0, 100))
                 .build();
 
-        int totalScores = grade.getGradeSum(subjects.getKorean(),subjects.getEnglish(),subjects.getMath());
+        int totalScores = grade.getGradeSum(subjects.getKorean(), subjects.getEnglish(), subjects.getMath());
         double averageScores = grade.getGradeAvg(totalScores);
 
         System.out.println(" ============= 성적표 ==============");
-        System.out.println("이름 : " + student.getUserName());
+        System.out.println("이름 : " + student.getUsername());
         System.out.println("국어 점수 : " + subjects.getKorean());
         System.out.println("영어 점수 : " + subjects.getEnglish());
         System.out.println("수학 점수 : " + subjects.getMath());

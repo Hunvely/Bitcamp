@@ -20,11 +20,11 @@ public interface UserService {
 
     UserDto deleteUser(Scanner input);
 
-    public Map<String, UserDto> getUserInfo();
+    public List<UserDto> getUserInfo(Scanner input);
 
     List<UserDto> findUsersByName(Scanner input);
 
-    List<UserDto> findUserByJob(String job);
+    List<UserDto> findUserByJob(Scanner input);
 
     String countUsers();
 }
