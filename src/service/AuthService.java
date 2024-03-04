@@ -1,6 +1,6 @@
 package service;
 
-import model.UserDto;
+import model.User;
 
 import java.util.Map;
 import java.util.Scanner;
@@ -13,9 +13,9 @@ public interface AuthService {
 
     String addUsers();
 
-    UserDto findUser(String username);
+    User findUser(String username);
 
-    Map<String, UserDto> getUserMap();
+    Map<String, User> getUserMap();
 
     String count();
 }

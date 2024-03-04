@@ -1,10 +1,10 @@
 package service;
 
-import model.UserDto;
+import model.User;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
+
 
 public interface UserService {
 
@@ -14,17 +14,17 @@ public interface UserService {
 
     String login(Scanner input);
 
-    UserDto findUserById(Scanner input);
+    User findUserById(Scanner input);
 
     String updatePassword(Scanner input);
 
-    UserDto deleteUser(Scanner input);
+    User deleteUser(Scanner input);
 
-    public List<UserDto> getUserInfo(Scanner input);
+    public List<User> getUserInfo(Scanner input);
 
-    List<UserDto> findUsersByName(Scanner input);
+    List<User> findUsersByName(Scanner input);
 
-    List<UserDto> findUserByJob(Scanner input);
+    List<User> findUserByJob(Scanner input);
 
     String countUsers();
 }

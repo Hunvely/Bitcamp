@@ -1,9 +1,7 @@
 package view;
 
 import controller.AccountController;
-import model.AccountDto;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class AccountView {
@@ -13,39 +11,51 @@ public class AccountView {
         AccountController accountCtrl = new AccountController();
 
         while (true) {
-            System.out.println("========================================================== 은행 프로그램 메뉴 ==========================================================");
-            System.out.println(" | 0 - 종료 | 1 - Create account Menu | 2 - Deposit Menu | 3 - Withdraw Menu | 4 - Check your balance Menu | 5 - Account Cancellation Menu | 6 - Load Account Menu | ");
+            System.out.println("=============================================================== Bank Program Menu ========================================================================");
+            System.out.println(" | 0 - Return Home | 1 - Create account | 2 - Deposit | 3 - Withdraw | 4 - Check your balance | 5 - Account Cancellation | 6 - Load Account | ");
 
             String menuSelect = input.next();
 
             switch (menuSelect) {
                 case "0":
-                    System.out.println(" === Close the banking program. === ");
+                    System.out.println(" === Exit banking program. === ");
+                    System.out.println();
                     return;
                 case "1":
-                    System.out.println(" === Start Create account === ");
-                    accountCtrl.createAccount(input);
+                    System.out.println(" === Create account === ");
+                    String createMsg = accountCtrl.createAccount(input);
+                    System.out.println(createMsg);
+                    System.out.println();
                     break;
                 case "2":
-                    System.out.println(" === Start Deposit Menu === ");
-                    accountCtrl.deposit(input);
+                    System.out.println(" === Deposit to your account === ");
+                    String depositMsg = accountCtrl.deposit(input);
+                    System.out.println(depositMsg);
+                    System.out.println();
                     break;
                 case "3":
-                    System.out.println(" === Start Withdraw Menu === ");
-                    accountCtrl.withdraw(input);
+                    System.out.println(" === Withdraw from your account === ");
+                    String withdrawMsg = accountCtrl.withdraw(input);
+                    System.out.println(withdrawMsg);
+                    System.out.println();
                     break;
                 case "4":
-                    System.out.println(" === Start Check your balance Menu");
-                    accountCtrl.getBalance(input);
+                    System.out.println(" === Check your balance === ");
+                    String checkBalanceMsg = accountCtrl.getBalance(input);
+                    System.out.println(checkBalanceMsg);
+                    System.out.println();
                     break;
                 case "5":
-                    System.out.println(" === Start account cancellation Menu === ");
-                   // List<AccountDto> checkBalance(input);
-                    accountCtrl.cancelAccount(input);
+                    System.out.println(" === Cancle your account === ");
+                    String cancelAccountMsg = accountCtrl.cancelAccount(input);
+                    System.out.println(cancelAccountMsg);
+                    System.out.println();
                     break;
                 case "6":
-                    System.out.println(" === Start Load Account Menu === ");
-                    accountCtrl.getAccounts(input);
+                    System.out.println(" === Load your transanction details === ");
+                    String loadMag = accountCtrl.getAccounts(input).toString();
+                    System.out.println(loadMag);
+                    System.out.println();
                     break;
             }
         }

@@ -1,7 +1,6 @@
 package serviceImpl;
 
-import builder.UserBuilder;
-import model.UserDto;
+import model.User;
 import service.UserService;
 
 import java.util.*;
@@ -14,13 +13,15 @@ public class UserServiceImpl implements UserService {
         return instance;
     }
 
-    Map<String, UserDto> users;
+    Map<String, User> users;
 
-    List<String> list;
+    List<?> list;
+    List<?> userDtoList;
 
     private UserServiceImpl() {
         this.users = new HashMap<>();
         this.list = new ArrayList<String>();
+        userDtoList = new ArrayList<>();
     }
 
 
@@ -29,10 +30,10 @@ public class UserServiceImpl implements UserService {
         System.out.println("아이디 | 비밀번호 | 비밀번호 확인 | 이름 | 주민번호 | 전화번호 | 주소 | 직업 순으로 입력하세요.");
         String username = input.next();
         users.put(username,
-                new UserBuilder()
+                User.bulder()
                         .username(username)
                         .password(input.next())
-                        .repassword(input.next())
+                        .rePassword(input.next())
                         .name(input.next())
                         .socialSecurityNumber(input.next())
                         .phoneNumber(input.next())
@@ -53,7 +54,7 @@ public class UserServiceImpl implements UserService {
         System.out.print("ID를 입력하세요 : ");
         String username = input.next();
 
-        UserDto user = users.get(username);
+        User user = users.get(username);
         if (user != null) {
             System.out.print("비밀번호를 입력하세요 : ");
             String userPassword = input.next();
@@ -69,11 +70,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDto findUserById(Scanner input) {
+    public User findUserById(Scanner input) {
         System.out.print("검색 할 ID를 입력하세요 : ");
         String userId = input.next();
 
-        UserDto user = users.get(userId);
+        User user = users.get(userId);
         if (user != null) {
             System.out.println(user);
         } else {
@@ -87,7 +88,7 @@ public class UserServiceImpl implements UserService {
     public String updatePassword(Scanner input) {
         System.out.print("아이디를 입력하세요 : ");
         String username = input.next();
-        UserDto user = users.get(username);
+        User user = users.get(username);
         if (user != null) {
             System.out.print("변경 비밀번호를 입력하세요 : ");
             String rePassword = input.next();
@@ -100,11 +101,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDto deleteUser(Scanner input) {
+    public User deleteUser(Scanner input) {
         System.out.print("탈퇴 할 아이디를 입력하세요 : ");
         String userId = input.next();
 
-        UserDto user = users.get(userId);
+        User user = users.get(userId);
         if (userId.equals(user.getUsername())) {
             users.remove(userId);
             System.out.println("탈퇴가 완료되었습니다.");
@@ -115,16 +116,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserDto> getUserInfo(Scanner input) {
+    public List<User> getUserInfo(Scanner input) {
        // users.forEach((k, v) -> System.out.println("{" + k + "," + v + "},"));
         return new ArrayList<>(users.values());
     }
 
     @Override
-    public List<UserDto> findUsersByName(Scanner input) {
+    public List<User> findUsersByName(Scanner input) {
         System.out.print("찾는 회원의 이름을 입력하세요 : ");
         String name = input.next();
-        UserDto userName = users.get(name);
+        User userName = users.get(name);
         if (userName != null) {
             System.out.println(userName);
         } else {
@@ -134,10 +135,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserDto> findUserByJob(Scanner input) {
+    public List<User> findUserByJob(Scanner input) {
         System.out.print("찾는 회원의 직업을 검색하세요 : ");
         String job = input.next();
-        UserDto userJob = users.get(job);
+        User userJob = users.get(job);
         if (userJob != null) {
             System.out.println(userJob);
         } else {

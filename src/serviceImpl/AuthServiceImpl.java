@@ -1,7 +1,6 @@
 package serviceImpl;
 
-import builder.UserBuilder;
-import model.UserDto;
+import model.User;
 import service.AuthService;
 import service.UtilService;
 
@@ -13,7 +12,7 @@ public class AuthServiceImpl implements AuthService {
 
     private static AuthService instance = new AuthServiceImpl();
 
-    Map<String, UserDto> users;
+    Map<String, User> users;
 
     private AuthServiceImpl() { // 기본 생성자 비공개로 생성.
         this.users = new HashMap<>(); // 호출할 때만 객체가 생성됨.
@@ -29,10 +28,10 @@ public class AuthServiceImpl implements AuthService {
                 " 전화번호, 주소, 직업을 순서대로 입력하세요.");
         String username = input.next();
         //users.put(username, );
-        UserDto userInfo = new UserBuilder()
+        User userInfo = User.bulder()
                 .username(input.next())
                 .password(input.next())
-                .repassword(input.next())
+                .rePassword(input.next())
                 .name(input.next())
                 .socialSecurityNumber(input.next())
                 .phoneNumber(input.next())
@@ -51,15 +50,14 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public String addUsers() {
-        Map<String, UserDto> map = new HashMap<>();
+        Map<String, User> map = new HashMap<>();
         UtilService util = UtilServiceImpl.getInstance();
         for (int i = 0; i < 5; i++) {
             String username = util.createRandomUsername();
-            map.put(username,
-                    new UserBuilder()
+            map.put(username, User.bulder()
                             .username(username)
                             .password("1")
-                            .repassword("1")
+                            .rePassword("1")
                             .name(util.createRandomName())
                             .build());
         }
@@ -68,13 +66,13 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public UserDto findUser(String username) {
-        UserDto user = new UserBuilder().build();
+    public User findUser(String username) {
+        User user = User.bulder().build();
         return user;
     }
 
     @Override
-    public Map<String, UserDto> getUserMap() {
+    public Map<String, User> getUserMap() {
         users.forEach((k,v)-> System.out.println("{"+k+","+v+"},"));
         return users;
     }

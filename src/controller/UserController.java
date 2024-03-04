@@ -1,11 +1,10 @@
 package controller;
 
-import model.UserDto;
+import model.User;
 import service.UserService;
 import serviceImpl.UserServiceImpl;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 
 public class UserController {
@@ -24,7 +23,7 @@ public class UserController {
         return user.login(input);
     }
 
-    public UserDto findUserById(Scanner input) {
+    public User findUserById(Scanner input) {
         return user.findUserById(input);
     }
 
@@ -32,15 +31,15 @@ public class UserController {
         return user.updatePassword(input);
     }
 
-    public UserDto deleteUser(Scanner input) {
+    public User deleteUser(Scanner input) {
         return user.deleteUser(input);
     }
 
-    public List<UserDto> getUserInfo(Scanner input) {
+    public List<User> getUserInfo(Scanner input) {
         return user.getUserInfo(input);
     }
 
-    public List<UserDto> findUserByName(Scanner input) {
+    public List<User> findUserByName(Scanner input) {
         return user.findUsersByName(input);
     }
 
@@ -49,11 +48,11 @@ public class UserController {
         UserServiceImpl.getInstance().addUsers();
     }*/
 
-    public List<UserDto> findUsersByName(Scanner input) {
+    public List<User> findUsersByName(Scanner input) {
         return user.findUsersByName(input);
     }
 
-    public List<UserDto> findUserByJob(Scanner input) {
+    public List<User> findUserByJob(Scanner input) {
         return user.findUserByJob(input);
     }
 

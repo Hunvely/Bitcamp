@@ -1,7 +1,6 @@
 package controller;
 
-import builder.AccountBuilder;
-import model.AccountDto;
+import model.Account;
 import service.AccountService;
 import serviceImpl.AccountServiceImpl;
 
@@ -17,47 +16,54 @@ public class AccountController {
         this.accountService = AccountServiceImpl.getInstance();
     }
 
-
     public String createAccount(Scanner input) {
-        System.out.println("계좌번호와 예금주를 입력하시오.");
-        return accountService.createAccount(new AccountBuilder()
+        System.out.println("Please input [sequence] [account] [accountHolder] [balance] you wish to register");
+        System.out.print("[Input] : ");
+        return accountService.createAccount(Account.builder()
                 .id(input.nextLong())
-                .accountNum(input.next())
-                .accountHold(input.next())
+                .accountNumber(input.next())
+                .accountHolder(input.next())
                 .balance(input.nextDouble())
-                .date(LocalDate.now())
-                .build(), input);
+                .transactionDate(LocalDate.now())
+                .build());
+
     }
 
     public String deposit(Scanner input) {
-        return accountService.deposit(new AccountBuilder()
-                .id(input.nextLong())
-                .accountNum(input.next())
-                .accountHold(input.next())
+        System.out.println("Input the amount you wish to deposit.");
+        System.out.print("[Input Account Number] [Input Deposit Amount] : ");
+        return accountService.deposit(Account.builder()
+                .accountNumber(input.next())
                 .balance(input.nextDouble())
-                .date(LocalDate.now())
-                .build(), input);
+                .transactionDate(LocalDate.now())
+                .build());
     }
 
     public String withdraw(Scanner input) {
-        return accountService.withdraw(new AccountBuilder()
-                .id(input.nextLong())
-                .accountNum(input.next())
-                .accountNum(input.next())
+        System.out.println("Input the amount you wish to withdraw.");
+        System.out.print("[Input Account Number] [Input Withdraw Amount] : ");
+        return accountService.withdraw(Account.builder()
+                .accountNumber(input.next())
                 .balance(input.nextDouble())
-                .date(LocalDate.now())
-                .build(), input);
+                .transactionDate(LocalDate.now())
+                .build());
     }
 
     public String getBalance(Scanner input) {
+        System.out.println("Enter the account number to check your balance.");
+        System.out.print("[Input] : ");
         return accountService.getBalance(input.next());
     }
 
     public String cancelAccount(Scanner input) {
+        System.out.println("Enter the account number you wish to delete.");
+        System.out.print("[Input] : ");
         return accountService.cancelAccount(input.next());
     }
 
-    public List<AccountDto> getAccounts(Scanner input) {
-        return accountService.getAccounts();
+    public List<Account> getAccounts(Scanner input) {
+        System.out.println("Enter the account number for which you want to search account details.");
+        System.out.print("[Input] : ");
+        return accountService.getAccounts(input.next());
     }
 }

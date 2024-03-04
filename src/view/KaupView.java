@@ -1,13 +1,11 @@
 package view;
 
-import builder.UserBuilder;
-import model.UserDto;
+import model.User;
 import service.KaupService;
 import service.UtilService;
 import serviceImpl.KaupServiceImpl;
 import serviceImpl.UtilServiceImpl;
 
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class KaupView {
@@ -16,7 +14,7 @@ public class KaupView {
 
         UtilService util = UtilServiceImpl.getInstance();
 
-        UserDto person = new UserBuilder()
+        User person = User.bulder()
                 .height(util.createHeight())
                 .weight(util.createWeight())
                 .build();
